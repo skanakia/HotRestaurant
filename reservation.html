@@ -27,8 +27,12 @@
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <button type="button" class="btn btn-primary" id="tables-btn">Tables</button>
-                    <button type="button" class="btn btn-primary" id="home-btn">Home</button>
+                    <a href="./tables.html">
+                        <button type="button" class="btn btn-primary" id="tables-btn">Tables</button>
+                    </a>
+                    <a href="./index.html">
+                        <button type="button" class="btn btn-primary" id="home-btn">Home</button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -70,23 +74,23 @@
     <!-- <script src="./server.js"></script> -->
 
     <script>
-    $("#book-btn").on("click", function(event) {
-        console.log("working");
-      event.preventDefault();
-      var newBooking = {
-        name: $("#name").val().trim(),
-        phone: $("#phone").val().trim(),
-        email: $("#email").val().trim(),
-        uniqueID: $("#uniqueID").val().trim()
-      };
+        $("#book-btn").on("click", function (event) {
+            console.log("working");
+            event.preventDefault();
+            var newBooking = {
+                name: $("#name").val().trim(),
+                phone: $("#phone").val().trim(),
+                email: $("#email").val().trim(),
+                uniqueID: $("#uniqueID").val().trim()
+            };
 
-      // Question: What does this code do??
-      $.post("/bookings", newBooking)
-        .then(function(data) {
-          console.log(data);
-          alert("Making Reservation...");
+            // Question: What does this code do??
+            $.post("/bookings", newBooking)
+                .then(function (data) {
+                    console.log(data);
+                    alert("Making Reservation...");
+                });
         });
-    });
 
     </script>
 

@@ -26,8 +26,12 @@
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <button type="button" class="btn btn-primary" id="reserve-btn">Reservations</button>
-                    <button type="button" class="btn btn-primary" id="home-btn">Home</button>
+                        <a href="./reservation.html">
+                            <button type="button" class="btn btn-primary" id="reserve-btn">Reservations</button>
+                        </a>
+                        <a href="./index.html">
+                            <button type="button" class="btn btn-primary" id="home-btn">Home</button>
+                        </a>
                 </div>
             </div>
         </div>
@@ -63,24 +67,26 @@
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    
-    <script>
-        $.get("/bookings", function(data) {
-        console.log(data[0]);
-        for(var i = 0; i < data[0].length; i++) {
-          var newDiv = $("<div>");
-          newDiv.attr("class", "newReservation");
-          $(newDiv).text((i + 1) + ". " + data[0][i].uniqueID);
-          $("#currentReserve").append(newDiv);
-        }
-        for(var j = 0; j < data[1].length; j++) {
-          var newDiv = $("<div>");
-          newDiv.attr("class", "newReservation");
-          $(newDiv).text((j + 1) + ". " + data[1][j].uniqueID);
-          $("#waitingList").append(newDiv);
-        }
 
-    });
+    <script>
+        $.get("/bookings", function (data) {
+            console.log(data[0]);
+            for (var i = 0; i < data[0].length; i++) {
+                var newDiv = $("<div>");
+                newDiv.attr("class", "newReservation");
+                $(newDiv).text((i + 1) + ". " + data[0][i].uniqueID);
+                $("#currentReserve").append(newDiv);
+            }
+            for (var j = 0; j < data[1].length; j++) {
+                var newDiv = $("<div>");
+                newDiv.attr("class", "newReservation");
+                $(newDiv).text((j + 1) + ". " + data[1][j].uniqueID);
+                $("#waitingList").append(newDiv);
+            }
+
+        });
+
+
     </script>
 </body>
 
