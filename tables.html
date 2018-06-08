@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -26,8 +26,8 @@
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <button type="button" class="btn btn-primary" id="book-btn">Reservations</button>
-                    <button type="button" class="btn btn-primary" id="book-btn">Home</button>
+                    <button type="button" class="btn btn-primary" id="reserve-btn">Reservations</button>
+                    <button type="button" class="btn btn-primary" id="home-btn">Home</button>
                 </div>
             </div>
         </div>
@@ -63,7 +63,25 @@
 
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="./server.js"></script>
+    
+    <script>
+        $.get("/bookings", function(data) {
+        console.log(data[0]);
+        for(var i = 0; i < data[0].length; i++) {
+          var newDiv = $("<div>");
+          newDiv.attr("class", "newReservation");
+          $(newDiv).text((i + 1) + ". " + data[0][i].uniqueID);
+          $("#currentReserve").append(newDiv);
+        }
+        for(var j = 0; j < data[1].length; j++) {
+          var newDiv = $("<div>");
+          newDiv.attr("class", "newReservation");
+          $(newDiv).text((j + 1) + ". " + data[1][j].uniqueID);
+          $("#waitingList").append(newDiv);
+        }
+
+    });
+    </script>
 </body>
 
 </html>

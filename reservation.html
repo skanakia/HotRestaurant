@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
 </head>
 
 <body>
@@ -27,8 +27,8 @@
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <button type="button" class="btn btn-primary" id="book-btn">Tables</button>
-                    <button type="button" class="btn btn-primary" id="book-btn">Home</button>
+                    <button type="button" class="btn btn-primary" id="tables-btn">Tables</button>
+                    <button type="button" class="btn btn-primary" id="home-btn">Home</button>
                 </div>
             </div>
         </div>
@@ -67,12 +67,13 @@
     </div>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="./server.js"></script>
+    <!-- <script src="./server.js"></script> -->
 
     <script>
     $("#book-btn").on("click", function(event) {
+        console.log("working");
       event.preventDefault();
-      var newCharacter = {
+      var newBooking = {
         name: $("#name").val().trim(),
         phone: $("#phone").val().trim(),
         email: $("#email").val().trim(),
@@ -80,10 +81,10 @@
       };
 
       // Question: What does this code do??
-      $.post("/", newCharacter)
+      $.post("/bookings", newBooking)
         .then(function(data) {
-          console.log("add.html", data);
-          alert("Adding character...");
+          console.log(data);
+          alert("Making Reservation...");
         });
     });
 
